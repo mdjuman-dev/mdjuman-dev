@@ -2,7 +2,7 @@
 
 ###
 
-<h3 align="left">My name is Md Juman and I'm a full stack web developer from Bangladesh</h3>
+<h3 align="left">My name is Md Juman <br>and I'm a full stack web developer from Bangladesh</h3>
 
 ###
 
