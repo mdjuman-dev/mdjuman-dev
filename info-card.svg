@@ -1,0 +1,44 @@
+<svg viewBox="0 0 490 236" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14">
+<rect x="0" y="0" width="490" height="236" rx="10" fill="#0d1117" stroke="#30363d"/>
+<circle cx="22" cy="17" r="5" fill="#ff5f56"/>
+<circle cx="40" cy="17" r="5" fill="#ffbd2e"/>
+<circle cx="58" cy="17" r="5" fill="#27c93f"/>
+<text x="245.0" y="22" text-anchor="middle" fill="#8b949e" font-size="12">mdjuman-dev@github</text>
+<line x1="0" y1="34" x2="490" y2="34" stroke="#30363d"/>
+<g opacity="0" transform="translate(-8,0)">
+  <animate attributeName="opacity" from="0" to="1" begin="0.00s" dur="0.4s" fill="freeze"/>
+  <animateTransform attributeName="transform" type="translate" from="-8 0" to="0 0" begin="0.00s" dur="0.4s" fill="freeze"/>
+  <text x="22" y="70" fill="#39d353">Name</text>
+  <text x="87.6" y="70" fill="#c9d1d9">Md Juman</text>
+</g>
+<g opacity="0" transform="translate(-8,0)">
+  <animate attributeName="opacity" from="0" to="1" begin="0.16s" dur="0.4s" fill="freeze"/>
+  <animateTransform attributeName="transform" type="translate" from="-8 0" to="0 0" begin="0.16s" dur="0.4s" fill="freeze"/>
+  <text x="22" y="100" fill="#39d353">Now</text>
+  <text x="87.6" y="100" fill="#c9d1d9">Full-Stack Developer @ TechitNext</text>
+</g>
+<g opacity="0" transform="translate(-8,0)">
+  <animate attributeName="opacity" from="0" to="1" begin="0.32s" dur="0.4s" fill="freeze"/>
+  <animateTransform attributeName="transform" type="translate" from="-8 0" to="0 0" begin="0.32s" dur="0.4s" fill="freeze"/>
+  <text x="22" y="130" fill="#39d353">Prev</text>
+  <text x="87.6" y="130" fill="#c9d1d9">Co-Founder @ TechitNext</text>
+</g>
+<g opacity="0" transform="translate(-8,0)">
+  <animate attributeName="opacity" from="0" to="1" begin="0.48s" dur="0.4s" fill="freeze"/>
+  <animateTransform attributeName="transform" type="translate" from="-8 0" to="0 0" begin="0.48s" dur="0.4s" fill="freeze"/>
+  <text x="22" y="160" fill="#39d353">Stack</text>
+  <text x="87.6" y="160" fill="#c9d1d9">Laravel · PHP · React · Next.js · MySQL</text>
+</g>
+<g opacity="0" transform="translate(-8,0)">
+  <animate attributeName="opacity" from="0" to="1" begin="0.64s" dur="0.4s" fill="freeze"/>
+  <animateTransform attributeName="transform" type="translate" from="-8 0" to="0 0" begin="0.64s" dur="0.4s" fill="freeze"/>
+  <text x="22" y="190" fill="#39d353">Building</text>
+  <text x="87.6" y="190" fill="#c9d1d9">Production client apps (web + e-commerce)</text>
+</g>
+<g opacity="0" transform="translate(-8,0)">
+  <animate attributeName="opacity" from="0" to="1" begin="0.80s" dur="0.4s" fill="freeze"/>
+  <animateTransform attributeName="transform" type="translate" from="-8 0" to="0 0" begin="0.80s" dur="0.4s" fill="freeze"/>
+  <text x="22" y="220" fill="#39d353">Base</text>
+  <text x="87.6" y="220" fill="#c9d1d9">Chattogram · juman.techitnext.com</text>
+</g>
+</svg>
