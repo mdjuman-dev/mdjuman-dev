@@ -1,16 +1,16 @@
 """
-Step 5a — pull the real contribution calendar without a token or the GraphQL API.
+Step 5a — pull the real contribution calendar.
 
-GitHub serves the calendar as public HTML at
-https://github.com/users/<username>/contributions -- the same fragment the
-profile page itself renders. We fetch it, parse day cells with
-BeautifulSoup, and write data/contributions.json with raw days + derived
-stats (current streak, longest streak, best day, monthly totals).
+Prefers the public HTML calendar at
+https://github.com/users/<username>/contributions. If that returns nothing
+(GitHub markup change / Actions IP block), falls back to GraphQL when
+GITHUB_TOKEN or GH_TOKEN is set.
 
 Usage:
     python scripts/fetch_contributions.py
 """
 import json
+import os
 from collections import defaultdict
 from datetime import date
 
@@ -21,9 +21,28 @@ from config import GH_USERNAME, CONTRIB_JSON
 
 URL = f"https://github.com/users/{GH_USERNAME}/contributions"
 HEADERS = {"User-Agent": "Mozilla/5.0 (profile-readme-bot)"}
+GRAPHQL_URL = "https://api.github.com/graphql"
+LEVEL_MAP = {
+    "NONE": 0,
+    "FIRST_QUARTILE": 1,
+    "SECOND_QUARTILE": 2,
+    "THIRD_QUARTILE": 3,
+    "FOURTH_QUARTILE": 4,
+}
 
 
 def fetch_days() -> list[dict]:
+    try:
+        days = fetch_days_html()
+        if days:
+            return days
+        print("HTML calendar returned 0 days; trying GraphQL")
+    except Exception as exc:
+        print(f"HTML calendar failed ({exc}); trying GraphQL")
+    return fetch_days_graphql()
+
+
+def fetch_days_html() -> list[dict]:
     resp = requests.get(URL, headers=HEADERS, timeout=20)
     resp.raise_for_status()
     soup = BeautifulSoup(resp.text, "html.parser")
@@ -59,6 +78,56 @@ def fetch_days() -> list[dict]:
             "level": int(level) if level is not None else None,
         })
 
+    days.sort(key=lambda x: x["date"])
+    return days
+
+
+def fetch_days_graphql() -> list[dict]:
+    token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
+    if not token:
+        raise RuntimeError("no GITHUB_TOKEN/GH_TOKEN for GraphQL fallback")
+
+    query = """
+    query($login: String!) {
+      user(login: $login) {
+        contributionsCollection {
+          contributionCalendar {
+            weeks {
+              contributionDays {
+                date
+                contributionCount
+                contributionLevel
+              }
+            }
+          }
+        }
+      }
+    }
+    """
+    resp = requests.post(
+        GRAPHQL_URL,
+        json={"query": query, "variables": {"login": GH_USERNAME}},
+        headers={
+            "Authorization": f"Bearer {token}",
+            "User-Agent": "profile-readme-bot",
+        },
+        timeout=20,
+    )
+    resp.raise_for_status()
+    payload = resp.json()
+    if payload.get("errors"):
+        raise RuntimeError(payload["errors"])
+    weeks = (
+        payload["data"]["user"]["contributionsCollection"]["contributionCalendar"]["weeks"]
+    )
+    days = []
+    for week in weeks:
+        for d in week["contributionDays"]:
+            days.append({
+                "date": d["date"],
+                "count": d["contributionCount"],
+                "level": LEVEL_MAP.get(d["contributionLevel"], 0),
+            })
     days.sort(key=lambda x: x["date"])
     return days
 

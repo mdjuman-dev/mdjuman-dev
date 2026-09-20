@@ -117,9 +117,10 @@ def build_svg(payload: dict) -> str:
             step = wi + di
             begin = step * STEP_DELAY
             title = f'{d["count"]} contribution{"s" if d["count"] != 1 else ""} on {d["date"]}'
+            # Resting state is fully visible so GitHub (no SMIL) still shows the grid.
             parts.append(
                 f'<rect x="{x}" y="{y}" width="{BOX}" height="{BOX}" rx="2" '
-                f'fill="{color}" opacity="0" transform="translate(-6,-6)">'
+                f'fill="{color}" opacity="1">'
                 f'<title>{esc(title)}</title>'
                 f'<animate attributeName="opacity" from="0" to="1" begin="{begin:.3f}s" '
                 f'dur="{BOX_DUR}s" fill="freeze"/>'
@@ -139,7 +140,10 @@ def build_svg(payload: dict) -> str:
     parts.append(f'<text x="{lx+4}" y="{legend_y}" fill="{DIM}">More</text>')
 
     # stats footer, bottom-right
-    footer = f'{stats["total"]:,} contributions in the last year · streak {stats["current_streak"]}d · best {stats["longest_streak"]}d'
+    footer = (
+        f'{stats["total"]:,} contributions in the last year · '
+        f'streak {stats["current_streak"]}d · longest {stats["longest_streak"]}d'
+    )
     parts.append(
         f'<text x="{width - RIGHT_PAD}" y="{legend_y}" text-anchor="end" fill="{BRIGHT}">{esc(footer)}</text>'
     )

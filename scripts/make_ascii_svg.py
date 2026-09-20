@@ -33,7 +33,7 @@ ROW_STAGGER = 0.045       # seconds between each row's start
 
 def image_to_ascii(path: str, cols: int, rows: int) -> list[str]:
     img = Image.open(path).convert("L").resize((cols, rows))
-    pixels = list(img.getdata())
+    pixels = img.tobytes()
     ramp_len = len(RAMP)
     lines = []
     for r in range(rows):
@@ -69,7 +69,7 @@ def build_svg(lines: list[str]) -> str:
 
         parts.append(f'<clipPath id="{clip_id}">')
         parts.append(
-            f'  <rect x="10" y="{y - CHAR_H + 2:.1f}" height="{CHAR_H}" width="0">'
+            f'  <rect x="10" y="{y - CHAR_H + 2:.1f}" height="{CHAR_H}" width="{row_w:.1f}">'
             f'<animate attributeName="width" from="0" to="{row_w:.1f}" '
             f'begin="{start:.3f}s" dur="{ROW_DURATION}s" fill="freeze" '
             f'calcMode="spline" keySplines="0.25 0.1 0.25 1"/></rect>'

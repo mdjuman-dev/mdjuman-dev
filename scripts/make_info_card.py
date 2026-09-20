@@ -69,8 +69,9 @@ def build_svg() -> str:
             opacity_attr = ""
             transform = ""
         else:
-            opacity_attr = "opacity=\"0\""
-            transform = 'transform="translate(-8,0)"'
+            # Visible by default so GitHub still shows the card if SMIL is skipped.
+            opacity_attr = 'opacity="1"'
+            transform = ""
 
         parts.append(f'<g {opacity_attr} {transform}>')
         if not STATIC:

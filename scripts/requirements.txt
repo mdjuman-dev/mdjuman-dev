@@ -1,6 +1,7 @@
+# Daily heatmap (scripts/build.py and .github/workflows/update-heatmap.yml)
 requests==2.32.3
 beautifulsoup4==4.12.3
-# portrait-only (not needed by the daily cron job):
+# Portrait only: python scripts/build.py --portrait
 pillow
 numpy
 opencv-python
