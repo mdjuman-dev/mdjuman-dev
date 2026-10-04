@@ -2,41 +2,6 @@
   "username": "mdjuman-dev",
   "days": [
     {
-      "date": "2025-09-28",
-      "count": 0,
-      "level": 0
-    },
-    {
-      "date": "2025-09-29",
-      "count": 1,
-      "level": 1
-    },
-    {
-      "date": "2025-09-30",
-      "count": 5,
-      "level": 2
-    },
-    {
-      "date": "2025-10-01",
-      "count": 4,
-      "level": 1
-    },
-    {
-      "date": "2025-10-02",
-      "count": 0,
-      "level": 0
-    },
-    {
-      "date": "2025-10-03",
-      "count": 3,
-      "level": 1
-    },
-    {
-      "date": "2025-10-04",
-      "count": 1,
-      "level": 1
-    },
-    {
       "date": "2025-10-05",
       "count": 10,
       "level": 3
@@ -1855,20 +1820,24 @@
       "date": "2026-10-03",
       "count": 2,
       "level": 1
+    },
+    {
+      "date": "2026-10-04",
+      "count": 0,
+      "level": 0
     }
   ],
   "stats": {
-    "total": 1135,
+    "total": 1121,
     "best_day": {
       "date": "2026-09-30",
       "count": 43,
       "level": 4
     },
-    "current_streak": 9,
+    "current_streak": 0,
     "longest_streak": 26,
     "monthly": {
-      "2025-09": 6,
-      "2025-10": 156,
+      "2025-10": 148,
       "2025-11": 86,
       "2025-12": 80,
       "2026-01": 139,
