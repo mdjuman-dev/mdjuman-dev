@@ -27,7 +27,7 @@
 | [EcoBazr](https://github.com/mdjuman-dev/EcoBazr) | Front-end EcoBazar theme (GitHub Pages) | HTML · CSS · JS |
 
 <p>
-  <a href="https://juman.techitnext.com/">juman.techitnext.com</a>
+  <a href="https://doitstep.com">DoitStep</a>
   ·
   Full-stack @ <strong>TechitNext</strong>
   ·
