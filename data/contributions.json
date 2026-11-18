@@ -1835,6 +1835,11 @@
       "date": "2026-11-17",
       "count": 2,
       "level": 1
+    },
+    {
+      "date": "2026-11-18",
+      "count": 0,
+      "level": 0
     }
   ],
   "stats": {
@@ -1844,7 +1849,7 @@
       "count": 43,
       "level": 4
     },
-    "current_streak": 10,
+    "current_streak": 0,
     "longest_streak": 26,
     "monthly": {
       "2025-11": 35,
